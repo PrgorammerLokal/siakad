@@ -89,7 +89,41 @@ class MahasiswaController extends Controller
      */
     public function update(Request $request, Mahasiswa $mahasiswa)
     {
-        //
+        $this->validate($request, [
+            'nim' => 'required',
+            'nama' => 'required',
+            'alamat' => 'required',
+            'email' => 'required',
+            'tempat_lahir' => 'required',
+            'tgl_lahir' => 'required',
+            'jenis_kel' => 'required',
+            'agama' => 'required'
+        ]);
+
+        $user = Mahasiswa::find($mahasiswa);
+        if ($user) {
+        $user->nim = $request->nim ? $request->nim : $user->nim;
+        $user->nama = $request->nama ? $request->nama : $user->nama;
+        $user->alamat = $request->alamat ? $request->alamat : $user->alamat;
+        $user->email = $request->email ? $request->email : $user->email;
+        $user->tempat_lahir = $request->tempat_lahir ? $request->tempat_lahir : $user->tempat_lahir;
+        $user->tgl_lahir = $request->tgl_lahir ? $request->tgl_lahir : $user->tgl_lahir;
+        $user->jenis_kel = $request->jenis_kel ? $request->jenis_kel : $user->jenis_kel;
+        $user->agama = $request->agama ? $request->agama : $user->agama;
+        $user->save();
+
+            return response()->json([
+                'status' => true,
+                'Message' => 'Profil berhasil diubah!',
+                'data' => $user
+            ], 200);
+        }
+        return response()->json([
+            'status' => false,
+            "message" => "Error!",
+            "data" => ''
+        ], 404);
+        
     }
 
     /**
@@ -100,6 +134,19 @@ class MahasiswaController extends Controller
      */
     public function destroy(Mahasiswa $mahasiswa)
     {
-        //
+        $mhs = Mahasiswa::find($mahasiswa);
+
+        if ($mhs) {
+            $mhs->delete();
+            return response()->json([
+                'status' => true,
+                "message" => "Mahasiswa berhasil dihapus!",
+            ], 200);
+        }
+        return response()->json([
+            'status' => false,
+            "message" => "Error!",
+            "data" => ''
+        ], 404);
     }
 }
