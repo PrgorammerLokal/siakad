@@ -26,3 +26,10 @@ $router->group(['prefix' => 'auth'], function () use ($router) {
 
 // routes register
 $router->post('register', 'AuthController@register');
+
+// routes mahasiswa
+$router->group(['prefix' => 'mahasiswa'], function () use ($router) {
+    $router->post('store', 'MahasiswaController@store');
+    $router->get('all', 'MahasiswaController@all');
+    $router->get('show/{id}', 'MahasiswaController@show');
+});
