@@ -23,3 +23,6 @@ $router->group(['prefix' => 'auth'], function () use ($router) {
     $router->post('me', 'AuthController@me');
     $router->post('logout', 'AuthController@logout');
 });
+
+// routes register
+$router->post('register', 'AuthController@register');

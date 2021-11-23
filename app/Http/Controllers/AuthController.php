@@ -50,4 +50,39 @@ class AuthController extends Controller
             'message' => 'Log Out Success'
         ], 200);
     }
+
+    public function register(Request $request)
+    {
+        $this->validate($request, [
+            'username' => 'required|unique:users',
+            'password' => 'required|min:8',
+            'email' => 'required|email:dns|unique:users',
+            'no_telp' => 'required',
+            'level' => 'required',
+            "blokir" => "required"
+        ]);
+
+        $user = User::create([
+            'username' => $request->username,
+            'password' => Hash::make($request->password),
+            'email' => $request -> email,
+            'no_telp' => $request->no_telp,
+            'level' => $request->level,
+            "blokir" => $request->blokir
+        ]);
+       
+        if ($user) {
+            return response()->json([
+                'status' => true,
+                'message' => 'User created !',
+                'data' => $user
+            ], 201);
+        }
+
+        return response()->json([
+            'status' => false,
+            'message' => 'Error',
+            'data' => ''
+        ], 402);
+    }
 }
