@@ -87,7 +87,7 @@ class MahasiswaController extends Controller
      * @param  \App\Mahasiswa  $mahasiswa
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Mahasiswa $mahasiswa)
+    public function update(Request $request, $mahasiswa)
     {
         $this->validate($request, [
             'nim' => 'required',
@@ -100,22 +100,22 @@ class MahasiswaController extends Controller
             'agama' => 'required'
         ]);
 
-        $user = Mahasiswa::find($mahasiswa);
-        if ($user) {
-        $user->nim = $request->nim ? $request->nim : $user->nim;
-        $user->nama = $request->nama ? $request->nama : $user->nama;
-        $user->alamat = $request->alamat ? $request->alamat : $user->alamat;
-        $user->email = $request->email ? $request->email : $user->email;
-        $user->tempat_lahir = $request->tempat_lahir ? $request->tempat_lahir : $user->tempat_lahir;
-        $user->tgl_lahir = $request->tgl_lahir ? $request->tgl_lahir : $user->tgl_lahir;
-        $user->jenis_kel = $request->jenis_kel ? $request->jenis_kel : $user->jenis_kel;
-        $user->agama = $request->agama ? $request->agama : $user->agama;
-        $user->save();
+        $mhs = Mahasiswa::find($mahasiswa);
+        if ($mhs) {
+        $mhs->nim = $request->nim ? $request->nim : $mhs->nim;
+        $mhs->nama = $request->nama ? $request->nama : $mhs->nama;
+        $mhs->alamat = $request->alamat ? $request->alamat : $mhs->alamat;
+        $mhs->email = $request->email ? $request->email : $mhs->email;
+        $mhs->tempat_lahir = $request->tempat_lahir ? $request->tempat_lahir : $mhs->tempat_lahir;
+        $mhs->tgl_lahir = $request->tgl_lahir ? $request->tgl_lahir : $mhs->tgl_lahir;
+        $mhs->jenis_kel = $request->jenis_kel ? $request->jenis_kel : $mhs->jenis_kel;
+        $mhs->agama = $request->agama ? $request->agama : $mhs->agama;
+        $mhs->save();
 
             return response()->json([
                 'status' => true,
                 'Message' => 'Profil berhasil diubah!',
-                'data' => $user
+                'data' => $mhs
             ], 200);
         }
         return response()->json([
@@ -132,7 +132,7 @@ class MahasiswaController extends Controller
      * @param  \App\Mahasiswa  $mahasiswa
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Mahasiswa $mahasiswa)
+    public function destroy($mahasiswa)
     {
         $mhs = Mahasiswa::find($mahasiswa);
 
