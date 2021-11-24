@@ -102,15 +102,15 @@ class MahasiswaController extends Controller
 
         $mhs = Mahasiswa::find($mahasiswa);
         if ($mhs) {
-        $mhs->nim = $request->nim ? $request->nim : $mhs->nim;
-        $mhs->nama = $request->nama ? $request->nama : $mhs->nama;
-        $mhs->alamat = $request->alamat ? $request->alamat : $mhs->alamat;
-        $mhs->email = $request->email ? $request->email : $mhs->email;
-        $mhs->tempat_lahir = $request->tempat_lahir ? $request->tempat_lahir : $mhs->tempat_lahir;
-        $mhs->tgl_lahir = $request->tgl_lahir ? $request->tgl_lahir : $mhs->tgl_lahir;
-        $mhs->jenis_kel = $request->jenis_kel ? $request->jenis_kel : $mhs->jenis_kel;
-        $mhs->agama = $request->agama ? $request->agama : $mhs->agama;
-        $mhs->save();
+            $mhs->nim = $request->nim ? $request->nim : $mhs->nim;
+            $mhs->nama = $request->nama ? $request->nama : $mhs->nama;
+            $mhs->alamat = $request->alamat ? $request->alamat : $mhs->alamat;
+            $mhs->email = $request->email ? $request->email : $mhs->email;
+            $mhs->tempat_lahir = $request->tempat_lahir ? $request->tempat_lahir : $mhs->tempat_lahir;
+            $mhs->tgl_lahir = $request->tgl_lahir ? $request->tgl_lahir : $mhs->tgl_lahir;
+            $mhs->jenis_kel = $request->jenis_kel ? $request->jenis_kel : $mhs->jenis_kel;
+            $mhs->agama = $request->agama ? $request->agama : $mhs->agama;
+            $mhs->save();
 
             return response()->json([
                 'status' => true,
@@ -123,7 +123,6 @@ class MahasiswaController extends Controller
             "message" => "Error!",
             "data" => ''
         ], 404);
-        
     }
 
     /**
@@ -147,6 +146,25 @@ class MahasiswaController extends Controller
             'status' => false,
             "message" => "Error!",
             "data" => ''
+        ], 404);
+    }
+
+    // method search
+
+    public function search($keyword)
+    {
+        $mahasiswa = Mahasiswa::where('nim', 'like', '%' . $keyword . '%')->orWhere('nama', 'like', '%' . $keyword . '%')->first();
+        if ($mahasiswa) {
+            return response()->json([
+                'status' => true,
+                'message' => 'Success',
+                'data' => $mahasiswa
+            ], 200);
+        }
+        return response()->json([
+            'status' => false,
+            'message' => 'Not Found',
+            'data' => ''
         ], 404);
     }
 }

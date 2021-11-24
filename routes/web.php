@@ -34,4 +34,5 @@ $router->group(['prefix' => 'mahasiswa'], function () use ($router) {
     $router->get('show/{id}', 'MahasiswaController@show');
     $router->put('update/{mahasiswa}', 'MahasiswaController@update');
     $router->delete('destroy/{mahasiswa}', 'MahasiswaController@destroy');
+    $router->get('search/{keyword}', 'MahasiswaController@search');
 });
