@@ -1,11 +1,11 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => NULL,
+        'reference' => '0dfd4e4b98eea5f4299674d36b313b4ff4f45486',
         'name' => 'laravel/lumen',
         'dev' => true,
     ),
@@ -362,12 +362,12 @@
             ),
         ),
         'laravel/lumen' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => NULL,
+            'reference' => '0dfd4e4b98eea5f4299674d36b313b4ff4f45486',
             'dev_requirement' => false,
         ),
         'laravel/lumen-framework' => array(
@@ -386,6 +386,15 @@
             'install_path' => __DIR__ . '/../laravel/serializable-closure',
             'aliases' => array(),
             'reference' => '8148e72e6c2c3af7f05640ada1b26c3bca970f8d',
+            'dev_requirement' => false,
+        ),
+        'mmghv/lumen-route-binding' => array(
+            'pretty_version' => '1.5.2',
+            'version' => '1.5.2.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../mmghv/lumen-route-binding',
+            'aliases' => array(),
+            'reference' => '141c56f7def1fbe4278dcf214f56ebbae000569d',
             'dev_requirement' => false,
         ),
         'mockery/mockery' => array(

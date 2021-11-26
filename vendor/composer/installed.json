@@ -2432,6 +2432,65 @@
             "install-path": "../laravel/serializable-closure"
         },
         {
+            "name": "mmghv/lumen-route-binding",
+            "version": "1.5.2",
+            "version_normalized": "1.5.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mmghv/lumen-route-binding.git",
+                "reference": "141c56f7def1fbe4278dcf214f56ebbae000569d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mmghv/lumen-route-binding/zipball/141c56f7def1fbe4278dcf214f56ebbae000569d",
+                "reference": "141c56f7def1fbe4278dcf214f56ebbae000569d",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/lumen-framework": "5 - 8",
+                "nikic/fast-route": ">=0.4 <2.0",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "mockery/mockery": "~1.0",
+                "phpunit/phpunit": "~7.2.0"
+            },
+            "time": "2020-10-24T16:20:56+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "mmghv\\LumenRouteBinding\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mohamed Gharib",
+                    "email": "mmghv@coddest.com"
+                }
+            ],
+            "description": "Route model binding for Lumen",
+            "homepage": "https://github.com/mmghv/lumen-route-binding",
+            "keywords": [
+                "bind",
+                "binding",
+                "fast-route",
+                "lumen",
+                "model",
+                "route",
+                "route model binding"
+            ],
+            "support": {
+                "issues": "https://github.com/mmghv/lumen-route-binding/issues",
+                "source": "https://github.com/mmghv/lumen-route-binding/tree/1.5.2"
+            },
+            "install-path": "../mmghv/lumen-route-binding"
+        },
+        {
             "name": "mockery/mockery",
             "version": "1.4.4",
             "version_normalized": "1.4.4.0",

@@ -29,10 +29,19 @@ $router->post('register', 'AuthController@register');
 
 // routes mahasiswa
 $router->group(['prefix' => 'mahasiswa'], function () use ($router) {
-    $router->post('store', 'MahasiswaController@store');
+    $router->post('store', ['middleware' => 'auth', 'uses' => 'MahasiswaController@store']);
     $router->get('all', 'MahasiswaController@all');
     $router->get('show/{id}', 'MahasiswaController@show');
     $router->put('update/{mahasiswa}', 'MahasiswaController@update');
     $router->delete('destroy/{mahasiswa}', 'MahasiswaController@destroy');
     $router->get('search/{keyword}', 'MahasiswaController@search');
+});
+
+// routes prodi
+$router->group(['prefix' => 'prodi'], function () use ($router) {
+    $router->post('store', 'ProdiController@store');
+    $router->put('update/{prodi}', 'ProdiController@update');
+    $router->delete('destroy/{prodi}', 'ProdiController@destroy');
+    $router->get('show/{prodi}', 'ProdiController@show');
+    $router->get('all', 'ProdiController@all');
 });
